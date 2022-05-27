@@ -13,6 +13,8 @@ import androidx.navigation.compose.rememberNavController
 import com.joaograca.core.navigation.Route
 import com.joaograca.onboarding_presentation.age.AgeScreen
 import com.joaograca.onboarding_presentation.gender.GenderScreen
+import com.joaograca.onboarding_presentation.height.HeightScreen
+import com.joaograca.onboarding_presentation.weight.WeightScreen
 import com.joaograca.onboarding_presentation.welcome.WelcomeScreen
 import com.plcoding.calorytracker.navigation.navigate
 import com.plcoding.calorytracker.ui.theme.CaloryTrackerTheme
@@ -47,10 +49,16 @@ class MainActivity : ComponentActivity() {
                             GenderScreen(onNavigate = navController::navigate)
                         }
                         composable(Route.HEIGHT) {
-
+                            HeightScreen(
+                                scaffoldState = scaffoldState,
+                                onNavigate = navController::navigate
+                            )
                         }
                         composable(Route.WEIGHT) {
-
+                            WeightScreen(
+                                scaffoldState = scaffoldState,
+                                onNavigate = navController::navigate
+                            )
                         }
                         composable(Route.NUTRIENT_GOAL) {
 

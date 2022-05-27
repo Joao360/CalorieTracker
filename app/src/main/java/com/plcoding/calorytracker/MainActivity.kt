@@ -11,8 +11,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.joaograca.core.navigation.Route
+import com.joaograca.onboarding_presentation.activity.ActivityScreen
 import com.joaograca.onboarding_presentation.age.AgeScreen
 import com.joaograca.onboarding_presentation.gender.GenderScreen
+import com.joaograca.onboarding_presentation.goal.GoalScreen
 import com.joaograca.onboarding_presentation.height.HeightScreen
 import com.joaograca.onboarding_presentation.weight.WeightScreen
 import com.joaograca.onboarding_presentation.welcome.WelcomeScreen
@@ -37,7 +39,9 @@ class MainActivity : ComponentActivity() {
                         startDestination = Route.WELCOME
                     ) {
                         composable(Route.WELCOME) {
-                            WelcomeScreen(onNavigate = navController::navigate)
+                            WelcomeScreen(
+                                onNavigate = navController::navigate
+                            )
                         }
                         composable(Route.AGE) {
                             AgeScreen(
@@ -46,7 +50,9 @@ class MainActivity : ComponentActivity() {
                             )
                         }
                         composable(Route.GENDER) {
-                            GenderScreen(onNavigate = navController::navigate)
+                            GenderScreen(
+                                onNavigate = navController::navigate
+                            )
                         }
                         composable(Route.HEIGHT) {
                             HeightScreen(
@@ -64,10 +70,14 @@ class MainActivity : ComponentActivity() {
 
                         }
                         composable(Route.ACTIVITY) {
-
+                            ActivityScreen(
+                                onNavigate = navController::navigate
+                            )
                         }
                         composable(Route.GOAL) {
-
+                            GoalScreen(
+                                onNavigate = navController::navigate
+                            )
                         }
                         composable(Route.TRACKER_OVERVIEW) {
 

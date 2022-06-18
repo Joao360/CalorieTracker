@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.joaograca.core.domain.preferences.Preferences
 import com.joaograca.core.domain.use_case.FilterOutDigits
-import com.joaograca.core.navigation.Route
 import com.joaograca.core.util.UiEvent
 import com.joaograca.core.util.UiText
 import com.joaograca.onboarding_presentation.R
@@ -46,7 +45,7 @@ class AgeViewModel @Inject constructor(
             }
 
             preferences.saveAge(ageNumber)
-            _uiEvent.send(UiEvent.Navigate(Route.HEIGHT))
+            _uiEvent.send(UiEvent.Success)
         }
     }
 }

@@ -35,7 +35,7 @@ class SearchViewModel @Inject constructor(
             }
             is SearchEvent.OnAmountForFoodChange -> {
                 state = state.copy(
-                    trackableFoods = state.trackableFoods.map {
+                    trackableFood = state.trackableFood.map {
                         if (it.food == event.food) {
                             it.copy(amount = filterOutDigits(event.amount))
                         } else it
@@ -52,7 +52,7 @@ class SearchViewModel @Inject constructor(
             }
             is SearchEvent.OnToggleTrackableFood -> {
                 state = state.copy(
-                    trackableFoods = state.trackableFoods.map {
+                    trackableFood = state.trackableFood.map {
                         if (it.food == event.food) {
                             it.copy(isExpanded = !it.isExpanded)
                         } else it
@@ -67,14 +67,14 @@ class SearchViewModel @Inject constructor(
 
     private fun executeSearch() {
         viewModelScope.launch {
-            state = state.copy(isSearching = true, trackableFoods = emptyList())
+            state = state.copy(isSearching = true, trackableFood = emptyList())
 
             trackerUseCases.searchFood(
                 state.query
             )
                 .onSuccess { foods ->
                     state = state.copy(
-                        trackableFoods = foods.map {
+                        trackableFood = foods.map {
                             TrackableFoodUiState(it)
                         },
                         isSearching = false,
@@ -92,7 +92,7 @@ class SearchViewModel @Inject constructor(
 
     private fun trackFood(event: SearchEvent.OnTrackFoodClick) {
         viewModelScope.launch {
-            val uiState = state.trackableFoods.find { it.food == event.food }
+            val uiState = state.trackableFood.find { it.food == event.food }
             trackerUseCases.trackFood(
                 food = uiState?.food ?: return@launch,
                 amount = uiState.amount.toIntOrNull() ?: return@launch,

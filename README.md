@@ -1,79 +1,60 @@
-# CaloryTracker
+# CaloryTracker App
 
-An app developed during the
-course [Building Industry-Level Apps With Multi-Module Architecture](https://elopage.com/s/philipplackner/building-industry-level-apps-with-multi-module-architecture)
+This project is an app developed during the course [Building Industry-Level Apps With Multi-Module Architecture](https://elopage.com/s/philipplackner/building-industry-level-apps-with-multi-module-architecture). 
+Its purpose is to help users track their daily calorie intake in order to achieve their weight-related goals, whether it's losing, maintaining, or gaining weight.
 
-## What is the goal of the app
+## Features
 
-The main goal of the app, in terms of business logic, is to help users track their daily calories to
-achieve a certain goal. This goal can be lose, keep or gain weight.
+The app provides the following features to assist users in tracking their calories:
 
-The user will have a daily goal of calories, protein and fat ingested and the app will help tracking
-it by supplying a search page where they can search and track the calories of an ingested meal. If
-the the total calories ingested
+- Daily goal setting: Users can define their daily calorie, protein, and fat goals.
+- Meal tracking: The app allows users to track the calories of each meal they consume.
+- Food search: Users can search for specific food items and track their calorie intake accordingly.
 
-## The tech side of it
+## Technology Stack
 
-The app followed the multi-module architecture with Jetpack Compose as the UI framework and MVVM
-design pattern to connect each individual feature logic together.
+The app follows a multi-module architecture, utilizing the following technologies:
 
-As of today, the app has 3 modules
+- **UI Framework**: Jetpack Compose
+- **Design Pattern**: MVVM (Model-View-ViewModel)
 
-* app
-* onboarding
-* tracker
+The project consists of three modules:
 
-The app module serves as the launch point and thus is dependent of all of the remaining modules,
-while the onboarding module, as the name implies, has everything related to the onboarding process.
+1. **App**: This module serves as the launch point for the app and depends on the other two modules.
+2. **Onboarding**: This module handles the onboarding process, including relevant UI and functionality.
+3. **Tracker**: The tracker module manages the calorie tracking and food search features.
 
-The tracker module handles all the tracking of calories a user does. This includes the daily
-tracking of food for each meal and also the search for food.
+Each module is further divided into three sub-modules:
 
-### Inside each module
+- **Data**: Handles data management and storage.
+- **Domain**: Contains the core business logic of each module.
+- **Presentation**: Handles the UI and user interaction.
 
-It was decided each module would have 3 other sub-modules. Which are
+This modular structure ensures separation of concerns, with clear boundaries between different layers of the app.
 
-* data
-* domain
-* presentation
+## Navigation
 
-With this decision the ever separation of concerns will be even greater since we confirm the
-following:
+Initially, each module was responsible for its own navigation. However, it was later refactored to centralize navigation control in the app module. 
+This approach provides flexibility for future refactoring and simplifies the navigation process. The navigation between modules is facilitated through callback functions passed down to the respective views.
 
-* The domain layer shouldn't know anything from any other layer
-* The data and presentation layers should only communicate to the domain one, they should never know
-  the existence of the other or should know its details
+## Lessons Learned
 
-### Navigation
+Throughout the development of this project, several valuable insights were gained:
 
-The navigation, as a first implementation, was handled by each module and when the goal was to
-navigate to a screen present in a different module it would be done through a callback.
-
-Later it was refactored for the whole control of the navigation to be handled by the app module
-since it would give a much more agile way of refactoring the navigation if necessary. The way this
-was done was basically through passing callbacks to each view whenever they want to navigate to a
-different screen.
-
-## Things learnt with the development of this project
-
-- For dynamic features when choosing a dependency injection library you must pick `Dagger 2`
-  over `Dagger Hilt` since the latter requires knowledge of all modules at build time.
-- Each module has its own **permissions**, so if for some reason the app needs to access to the
-  internet you just need to add that permission to the modules that **use it**, instead of adding it
-  to the `app` module.
-- **Navigation** between modules is controlled by the app module. This module decides how the
-  navigation between modules work through a set of callback functions passed down to the modules
+- **Dynamic Features**: When choosing a dependency injection library for dynamic features, it is recommended to use `Dagger 2` instead of `Dagger Hilt`. The latter requires knowledge of all modules at build time.
+- **Module Permissions**: Each module can have its own permissions. If a specific module requires internet access, the permission can be added to that module alone, rather than the entire app module.
+- **Navigation Control**: Centralizing navigation control in the app module offers more flexibility and allows for easier navigation refactoring.
 
 ### Advantages & Disadvantages of Multiple Modules
 
 #### Pros
 
-- Separation of concerns
-- Faster build times
-- Support for instant apps & dynamic features
-- Reusability of modules
+- **Separation of Concerns**: The modular architecture ensures clear separation of different components, promoting maintainability and scalability.
+- **Faster Build Times**: With modularization, incremental builds become faster as only the necessary modules are recompiled.
+- **Support for Instant Apps & Dynamic Features**: The architecture supports instant app development and enables the implementation of dynamic features.
+- **Reusability of Modules**: Individual modules can be reused in other projects, reducing development effort.
 
-#### Disadvantages
+#### Cons
 
-- Requires a lot of work to setup
-- Not knowing what you’re doing will strongly backfire
+- **Setup Complexity**: Setting up the multi-module architecture requires additional effort and complexity during initial project setup.
+- **Potential Pitfalls**: Insufficient knowledge of module architecture and organization may lead to issues or inefficiencies in the project.

@@ -3,6 +3,11 @@
 This project is an app developed during the course [Building Industry-Level Apps With Multi-Module Architecture](https://elopage.com/s/philipplackner/building-industry-level-apps-with-multi-module-architecture). 
 Its purpose is to help users track their daily calorie intake in order to achieve their weight-related goals, whether it's losing, maintaining, or gaining weight.
 
+## App Preview
+Onboarding             |  Home             |  Search
+:-------------------------:|:-------------------------:|:-------------------------:
+![Screenshot 2023-06-03 at 11 33 51](https://github.com/Joao360/CalorieTracker/assets/17565955/89b01471-9f25-47c4-9fad-6201b96ef90d) | ![Screenshot 2023-06-03 at 11 30 46](https://github.com/Joao360/CalorieTracker/assets/17565955/586349b9-3992-4d39-b895-aabe0900dd58) | ![Screenshot 2023-06-03 at 11 28 42](https://github.com/Joao360/CalorieTracker/assets/17565955/4252aa63-1b50-4291-8de5-d3fcc5e6f2ad)
+
 ## Features
 
 The app provides the following features to assist users in tracking their calories:

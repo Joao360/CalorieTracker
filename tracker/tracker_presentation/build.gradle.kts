@@ -1,11 +1,15 @@
-apply {
-    from("$rootDir/compose-module.gradle")
+plugins {
+    id("compose-module")
+}
+
+android {
+    namespace = "com.joaograca.tracker_presentation"
 }
 
 dependencies {
-    "implementation"(project(Modules.core))
-    "implementation"(project(Modules.coreUi))
-    "implementation"(project(Modules.trackerDomain))
+    implementation(project(":core"))
+    implementation(project(":core-ui"))
+    implementation(project(":tracker:tracker_domain"))
 
-    "implementation"(Coil.coilCompose)
+    implementation(libs.coilCompose)
 }

@@ -1,9 +1,13 @@
-apply {
-    from("$rootDir/compose-module.gradle")
+plugins {
+    id("compose-module")
+}
+
+android {
+    namespace = "com.joaograca.onboarding_presentation"
 }
 
 dependencies {
-    "implementation"(project(Modules.core))
-    "implementation"(project(Modules.coreUi))
-    "implementation"(project(Modules.onboardingDomain))
+    implementation(project(":core"))
+    implementation(project(":core-ui"))
+    implementation(project(":onboarding:onboarding_domain"))
 }

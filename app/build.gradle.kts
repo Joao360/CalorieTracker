@@ -1,19 +1,19 @@
 plugins {
     id("com.android.application")
-    kotlin("android")
+    id("org.jetbrains.kotlin.android")
+    kotlin("kapt")
     id("dagger.hilt.android.plugin")
-    id("kotlin-kapt")
 }
 
 android {
-    compileSdk = ProjectConfig.compileSdk
+    compileSdk = 31
 
     defaultConfig {
-        applicationId = ProjectConfig.appId
-        minSdk = ProjectConfig.minSdk
-        targetSdk = ProjectConfig.targetSdk
-        versionCode = ProjectConfig.versionCode
-        versionName = ProjectConfig.versionName
+        applicationId = "com.plcoding.calorytracker"
+        minSdk = 21
+        targetSdk = 31
+        versionCode = 1
+        versionName = "1.0"
 
         testInstrumentationRunner = "com.plcoding.calorytracker.HiltTestRunner"
         vectorDrawables {
@@ -39,8 +39,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = Compose.composeCompilerVersion
-        // kotlinCompilerVersion '1.5.21'
+        kotlinCompilerExtensionVersion = libs.versions.composeCompiler.get()
     }
     packagingOptions {
         exclude("META-INF/AL2.0")
@@ -54,61 +53,61 @@ android {
 }
 
 dependencies {
-    implementation(Compose.compiler)
-    implementation(Compose.ui)
-    implementation(Compose.uiToolingPreview)
-    implementation(Compose.hiltNavigationCompose)
-    implementation(Compose.material)
-    implementation(Compose.runtime)
-    implementation(Compose.navigation)
-    implementation(Compose.viewModelCompose)
-    implementation(Compose.activityCompose)
+    implementation(libs.compose.compiler)
+    implementation(libs.compose.ui)
+    implementation(libs.compose.ui.tooling.preview)
+    implementation(libs.hilt.navigation.compose)
+    implementation(libs.compose.material)
+    implementation(libs.compose.runtime)
+    implementation(libs.navigation.compose)
+    implementation(libs.lifecycle.viewmodel.compose)
+    implementation(libs.activity.compose)
 
-    implementation(DaggerHilt.hiltAndroid)
-    kapt(DaggerHilt.hiltCompiler)
+    implementation(libs.hilt)
+    kapt(libs.hilt.compiler)
 
-    implementation(project(Modules.core))
-    implementation(project(Modules.coreUi))
-    implementation(project(Modules.onboardingPresentation))
-    implementation(project(Modules.onboardingDomain))
-    implementation(project(Modules.trackerPresentation))
-    implementation(project(Modules.trackerDomain))
-    implementation(project(Modules.trackerData))
+    implementation(project(":core"))
+    implementation(project(":core-ui"))
+    implementation(project(":onboarding:onboarding_presentation"))
+    implementation(project(":onboarding:onboarding_domain"))
+    implementation(project(":tracker:tracker_presentation"))
+    implementation(project(":tracker:tracker_domain"))
+    implementation(project(":tracker:tracker_data"))
 
-    implementation(AndroidX.coreKtx)
-    implementation(AndroidX.appCompat)
+    implementation(libs.core.ktx)
+    implementation(libs.app.compat)
 
-    implementation(Coil.coilCompose)
+    implementation(libs.coilCompose)
 
-    implementation(Google.material)
+    implementation(libs.material)
 
-    implementation(Retrofit.okHttp)
-    implementation(Retrofit.retrofit)
-    implementation(Retrofit.okHttpLoggingInterceptor)
-    implementation(Retrofit.moshiConverter)
+    implementation(libs.okHttp)
+    implementation(libs.retrofit)
+    implementation(libs.okHttp.logging.interceptor)
+    implementation(libs.retrofit.moshi.converter)
 
-    kapt(Room.roomCompiler)
-    implementation(Room.roomKtx)
-    implementation(Room.roomRuntime)
+    kapt(libs.room.compiler)
+    implementation(libs.room.ktx)
+    implementation(libs.room.runtime)
 
-    testImplementation(Testing.junit4)
-    testImplementation(Testing.junitAndroidExt)
-    testImplementation(Testing.truth)
-    testImplementation(Testing.coroutines)
-    testImplementation(Testing.turbine)
-    testImplementation(Testing.composeUiTest)
-    testImplementation(Testing.mockk)
-    testImplementation(Testing.mockWebServer)
+    testImplementation(libs.junit4)
+    testImplementation(libs.junitAndroidExt)
+    testImplementation(libs.truth)
+    testImplementation(libs.kotlinx.coroutines.core)
+    testImplementation(libs.turbine)
+    testImplementation(libs.composeUiTest)
+    testImplementation(libs.mockk)
+    testImplementation(libs.mockWebServer)
 
-    androidTestImplementation(Testing.junit4)
-    androidTestImplementation(Testing.junitAndroidExt)
-    androidTestImplementation(Testing.truth)
-    androidTestImplementation(Testing.coroutines)
-    androidTestImplementation(Testing.turbine)
-    androidTestImplementation(Testing.composeUiTest)
-    androidTestImplementation(Testing.mockkAndroid)
-    androidTestImplementation(Testing.mockWebServer)
-    androidTestImplementation(Testing.hiltTesting)
-    kaptAndroidTest(DaggerHilt.hiltCompiler)
-    androidTestImplementation(Testing.testRunner)
+    androidTestImplementation(libs.junit4)
+    androidTestImplementation(libs.junitAndroidExt)
+    androidTestImplementation(libs.truth)
+    androidTestImplementation(libs.kotlinx.coroutines.core)
+    androidTestImplementation(libs.turbine)
+    androidTestImplementation(libs.composeUiTest)
+    androidTestImplementation(libs.mockk.android)
+    androidTestImplementation(libs.mockWebServer)
+    androidTestImplementation(libs.hilt.android.testing)
+    kaptAndroidTest(libs.hilt.compiler)
+    androidTestImplementation(libs.testRunner)
 }

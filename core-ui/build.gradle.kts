@@ -1,5 +1,9 @@
-apply {
-    from("$rootDir/compose-module.gradle")
+plugins {
+    id("compose-module")
+}
+
+android {
+    namespace = "com.joaograca.core_ui"
 }
 
 dependencies {

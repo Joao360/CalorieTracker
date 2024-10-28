@@ -1,17 +1,21 @@
-apply {
-    from("$rootDir/base-module.gradle")
+plugins {
+    id("base-module")
+}
+
+android {
+    namespace = "com.joaograca.tracker_data"
 }
 
 dependencies {
-    "implementation"(project(Modules.core))
-    "implementation"(project(Modules.trackerDomain))
+    implementation(project(":core"))
+    implementation(project(":tracker:tracker_domain"))
 
-    "implementation"(Retrofit.okHttp)
-    "implementation"(Retrofit.retrofit)
-    "implementation"(Retrofit.okHttpLoggingInterceptor)
-    "implementation"(Retrofit.moshiConverter)
+    implementation(libs.okHttp)
+    implementation(libs.retrofit)
+    implementation(libs.okHttp.logging.interceptor)
+    implementation(libs.retrofit.moshi.converter)
 
-    "kapt"(Room.roomCompiler)
-    "implementation"(Room.roomKtx)
-    "implementation"(Room.roomRuntime)
+    kapt(libs.room.compiler)
+    implementation(libs.room.ktx)
+    implementation(libs.room.runtime)
 }

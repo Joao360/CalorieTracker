@@ -1,8 +1,12 @@
-apply {
-    from("$rootDir/base-module.gradle")
+plugins {
+    id("base-module")
+}
+
+android {
+    namespace = "com.joaograca.tracker_domain"
 }
 
 dependencies {
-    "implementation"(project(Modules.core))
-    "implementation"(Coroutines.coroutines)
+    implementation(project(":core"))
+    implementation(libs.kotlinx.coroutines.core)
 }

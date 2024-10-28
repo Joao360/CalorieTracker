@@ -1,7 +1,11 @@
-apply {
-    from("$rootDir/base-module.gradle")
+plugins {
+    id("base-module")
+}
+
+android {
+    namespace = "com.joaograca.onboarding_domain"
 }
 
 dependencies {
-    "implementation"(project(Modules.core))
+    implementation(project(":core"))
 }

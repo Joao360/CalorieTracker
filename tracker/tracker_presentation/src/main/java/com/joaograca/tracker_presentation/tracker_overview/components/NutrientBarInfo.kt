@@ -21,7 +21,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.joaograca.tracker_presentation.R
+import com.joaograca.core.R
 import com.joaograca.tracker_presentation.components.UnitDisplay
 
 @Composable

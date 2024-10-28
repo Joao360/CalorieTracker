@@ -1,7 +1,7 @@
 package com.joaograca.onboarding_domain.use_case
 
 import com.joaograca.core.util.UiText
-import com.joaograca.onboarding_domain.R
+import com.joaograca.core.R
 
 class ValidateNutrients {
 

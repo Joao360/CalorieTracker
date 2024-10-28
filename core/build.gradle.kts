@@ -1,5 +1,9 @@
-apply {
-    from("$rootDir/base-module.gradle")
+plugins {
+    id("base-module")
+}
+
+android {
+    namespace = "com.joaograca.core"
 }
 
 dependencies {

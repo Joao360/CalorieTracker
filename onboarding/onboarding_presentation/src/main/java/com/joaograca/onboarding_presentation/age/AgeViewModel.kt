@@ -9,7 +9,7 @@ import com.joaograca.core.domain.preferences.Preferences
 import com.joaograca.core.domain.use_case.FilterOutDigits
 import com.joaograca.core.util.UiEvent
 import com.joaograca.core.util.UiText
-import com.joaograca.onboarding_presentation.R
+import com.joaograca.core.R
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow

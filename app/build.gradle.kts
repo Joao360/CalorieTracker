@@ -1,21 +1,23 @@
 plugins {
     id("com.android.application")
-    kotlin("android")
+    id("org.jetbrains.kotlin.android")
+    kotlin("kapt")
     id("dagger.hilt.android.plugin")
-    id("kotlin-kapt")
+    id("com.google.devtools.ksp")
 }
 
 android {
-    compileSdk = ProjectConfig.compileSdk
+    namespace = "com.joaograca.calorytracker"
+    compileSdk = 34
 
     defaultConfig {
-        applicationId = ProjectConfig.appId
-        minSdk = ProjectConfig.minSdk
-        targetSdk = ProjectConfig.targetSdk
-        versionCode = ProjectConfig.versionCode
-        versionName = ProjectConfig.versionName
+        applicationId = "com.joaograca.calorytracker"
+        minSdk = 21
+        targetSdk = 34
+        versionCode = 1
+        versionName = "1.0"
 
-        testInstrumentationRunner = "com.plcoding.calorytracker.HiltTestRunner"
+        testInstrumentationRunner = "com.joaograca.calorytracker.HiltTestRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -28,87 +30,89 @@ android {
         }
     }
     compileOptions {
+        isCoreLibraryDesugaringEnabled = true
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
         jvmTarget = "1.8"
-        // useIR = true
     }
     buildFeatures {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = Compose.composeCompilerVersion
-        // kotlinCompilerVersion '1.5.21'
+        kotlinCompilerExtensionVersion = libs.versions.composeCompiler.get()
     }
     packagingOptions {
-        exclude("META-INF/AL2.0")
-        exclude("META-INF/LGPL2.1")
-        exclude("**/attach_hotspot_windows.dll")
-        exclude("META-INF/licenses/ASM")
-        /*resources {
-            excludes += '/META-INF/{AL2.0,LGPL2.1}'
-        }*/
+        resources {
+            excludes += setOf(
+                "META-INF/AL2.0",
+                "META-INF/LGPL2.1",
+                "**/attach_hotspot_windows.dll",
+                "META-INF/licenses/ASM"
+            )
+        }
     }
 }
 
 dependencies {
-    implementation(Compose.compiler)
-    implementation(Compose.ui)
-    implementation(Compose.uiToolingPreview)
-    implementation(Compose.hiltNavigationCompose)
-    implementation(Compose.material)
-    implementation(Compose.runtime)
-    implementation(Compose.navigation)
-    implementation(Compose.viewModelCompose)
-    implementation(Compose.activityCompose)
+    coreLibraryDesugaring(libs.desugar)
 
-    implementation(DaggerHilt.hiltAndroid)
-    kapt(DaggerHilt.hiltCompiler)
+    implementation(libs.compose.compiler)
+    implementation(libs.compose.ui)
+    implementation(libs.compose.ui.tooling.preview)
+    implementation(libs.hilt.navigation.compose)
+    implementation(libs.compose.material)
+    implementation(libs.compose.runtime)
+    implementation(libs.navigation.compose)
+    implementation(libs.lifecycle.viewmodel.compose)
+    implementation(libs.activity.compose)
 
-    implementation(project(Modules.core))
-    implementation(project(Modules.coreUi))
-    implementation(project(Modules.onboardingPresentation))
-    implementation(project(Modules.onboardingDomain))
-    implementation(project(Modules.trackerPresentation))
-    implementation(project(Modules.trackerDomain))
-    implementation(project(Modules.trackerData))
+    implementation(libs.hilt)
+    kapt(libs.hilt.compiler)
 
-    implementation(AndroidX.coreKtx)
-    implementation(AndroidX.appCompat)
+    implementation(project(":core"))
+    implementation(project(":core-ui"))
+    implementation(project(":onboarding:onboarding_presentation"))
+    implementation(project(":onboarding:onboarding_domain"))
+    implementation(project(":tracker:tracker_presentation"))
+    implementation(project(":tracker:tracker_domain"))
+    implementation(project(":tracker:tracker_data"))
 
-    implementation(Coil.coilCompose)
+    implementation(libs.core.ktx)
+    implementation(libs.app.compat)
 
-    implementation(Google.material)
+    implementation(libs.coilCompose)
 
-    implementation(Retrofit.okHttp)
-    implementation(Retrofit.retrofit)
-    implementation(Retrofit.okHttpLoggingInterceptor)
-    implementation(Retrofit.moshiConverter)
+    implementation(libs.material)
 
-    kapt(Room.roomCompiler)
-    implementation(Room.roomKtx)
-    implementation(Room.roomRuntime)
+    implementation(libs.okHttp)
+    implementation(libs.retrofit)
+    implementation(libs.okHttp.logging.interceptor)
+    implementation(libs.retrofit.moshi.converter)
 
-    testImplementation(Testing.junit4)
-    testImplementation(Testing.junitAndroidExt)
-    testImplementation(Testing.truth)
-    testImplementation(Testing.coroutines)
-    testImplementation(Testing.turbine)
-    testImplementation(Testing.composeUiTest)
-    testImplementation(Testing.mockk)
-    testImplementation(Testing.mockWebServer)
+    ksp(libs.room.compiler)
+    implementation(libs.room.ktx)
+    implementation(libs.room.runtime)
 
-    androidTestImplementation(Testing.junit4)
-    androidTestImplementation(Testing.junitAndroidExt)
-    androidTestImplementation(Testing.truth)
-    androidTestImplementation(Testing.coroutines)
-    androidTestImplementation(Testing.turbine)
-    androidTestImplementation(Testing.composeUiTest)
-    androidTestImplementation(Testing.mockkAndroid)
-    androidTestImplementation(Testing.mockWebServer)
-    androidTestImplementation(Testing.hiltTesting)
-    kaptAndroidTest(DaggerHilt.hiltCompiler)
-    androidTestImplementation(Testing.testRunner)
+    testImplementation(libs.junit4)
+    testImplementation(libs.junitAndroidExt)
+    testImplementation(libs.truth)
+    testImplementation(libs.kotlinx.coroutines.core)
+    testImplementation(libs.turbine)
+    testImplementation(libs.composeUiTest)
+    testImplementation(libs.mockk)
+    testImplementation(libs.mockWebServer)
+
+    androidTestImplementation(libs.junit4)
+    androidTestImplementation(libs.junitAndroidExt)
+    androidTestImplementation(libs.truth)
+    androidTestImplementation(libs.kotlinx.coroutines.core)
+    androidTestImplementation(libs.turbine)
+    androidTestImplementation(libs.composeUiTest)
+    androidTestImplementation(libs.mockk.android)
+    androidTestImplementation(libs.mockWebServer)
+    androidTestImplementation(libs.hilt.android.testing)
+    kaptAndroidTest(libs.hilt.compiler)
+    androidTestImplementation(libs.testRunner)
 }

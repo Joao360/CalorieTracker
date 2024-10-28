@@ -3,7 +3,7 @@ package com.joaograca.tracker_presentation.tracker_overview
 import androidx.annotation.DrawableRes
 import com.joaograca.core.util.UiText
 import com.joaograca.tracker_domain.model.MealType
-import com.joaograca.tracker_presentation.R
+import com.joaograca.core.R
 
 data class Meal(
     val name: UiText,

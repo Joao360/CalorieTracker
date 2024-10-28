@@ -9,7 +9,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.joaograca.core_ui.LocalSpacing
-import com.joaograca.tracker_presentation.R
+import com.joaograca.core.R
 import com.joaograca.tracker_presentation.tracker_overview.components.*
 
 @Composable

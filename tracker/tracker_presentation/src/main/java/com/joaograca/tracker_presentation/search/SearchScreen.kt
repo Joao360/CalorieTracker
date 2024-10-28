@@ -20,7 +20,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.joaograca.core.util.UiEvent
 import com.joaograca.core_ui.LocalSpacing
 import com.joaograca.tracker_domain.model.MealType
-import com.joaograca.tracker_presentation.R
+import com.joaograca.core.R
 import com.joaograca.tracker_presentation.search.components.SearchTextField
 import com.joaograca.tracker_presentation.search.components.TrackableFoodItem
 import java.time.LocalDate

@@ -18,7 +18,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.sp
 import com.joaograca.core_ui.LocalSpacing
-import com.joaograca.tracker_presentation.R
+import com.joaograca.core.R
 import com.joaograca.tracker_presentation.components.NutrientInfo
 import com.joaograca.tracker_presentation.components.UnitDisplay
 import com.joaograca.tracker_presentation.tracker_overview.Meal

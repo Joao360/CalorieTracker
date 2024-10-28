@@ -17,7 +17,7 @@ import com.joaograca.core_ui.CarbColor
 import com.joaograca.core_ui.FatColor
 import com.joaograca.core_ui.LocalSpacing
 import com.joaograca.core_ui.ProteinColor
-import com.joaograca.tracker_presentation.R
+import com.joaograca.core.R
 import com.joaograca.tracker_presentation.components.UnitDisplay
 import com.joaograca.tracker_presentation.tracker_overview.TrackerOverviewState
 

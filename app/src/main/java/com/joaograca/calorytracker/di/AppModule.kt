@@ -1,4 +1,4 @@
-package com.plcoding.calorytracker.di
+package com.joaograca.calorytracker.di
 
 import android.app.Application
 import android.content.Context.MODE_PRIVATE

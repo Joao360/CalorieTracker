@@ -18,7 +18,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.2.0-beta02"
+        kotlinCompilerExtensionVersion = libs.findVersion("composeCompiler").get().toString()
     }
     compileOptions {
         isCoreLibraryDesugaringEnabled = true

@@ -28,7 +28,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import com.joaograca.core_ui.LocalSpacing
-import com.joaograca.tracker_presentation.R
+import com.joaograca.core.R
 
 @Composable
 fun SearchTextField(

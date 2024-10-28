@@ -13,7 +13,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.joaograca.core.util.UiEvent
 import com.joaograca.core_ui.LocalSpacing
-import com.joaograca.onboarding_presentation.R
+import com.joaograca.core.R
 import com.joaograca.onboarding_presentation.components.ActionButton
 import com.joaograca.onboarding_presentation.components.UnitTextField
 import kotlinx.coroutines.flow.collect

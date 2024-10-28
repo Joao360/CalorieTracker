@@ -1,4 +1,4 @@
-package com.plcoding.calorytracker
+package com.joaograca.calorytracker
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

@@ -1,9 +1,10 @@
-package com.plcoding.calorytracker
+package com.joaograca.calorytracker
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Scaffold
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.ui.Modifier
@@ -23,8 +24,8 @@ import com.joaograca.onboarding_presentation.weight.WeightScreen
 import com.joaograca.onboarding_presentation.welcome.WelcomeScreen
 import com.joaograca.tracker_presentation.search.SearchScreen
 import com.joaograca.tracker_presentation.tracker_overview.TrackerOverviewScreen
-import com.plcoding.calorytracker.navigation.Route
-import com.plcoding.calorytracker.ui.theme.CaloryTrackerTheme
+import com.joaograca.calorytracker.navigation.Route
+import com.joaograca.calorytracker.ui.theme.CaloryTrackerTheme
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -44,10 +45,11 @@ class MainActivity : ComponentActivity() {
                 Scaffold(
                     modifier = Modifier.fillMaxSize(),
                     scaffoldState = scaffoldState
-                ) {
+                ) { innerPadding ->
                     NavHost(
                         navController = navController,
-                        startDestination = if (shouldShowOnboarding) Route.WELCOME else Route.TRACKER_OVERVIEW
+                        startDestination = if (shouldShowOnboarding) Route.WELCOME else Route.TRACKER_OVERVIEW,
+                        modifier = Modifier.padding(innerPadding)
                     ) {
                         composable(Route.WELCOME) {
                             WelcomeScreen(

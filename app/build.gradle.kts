@@ -3,19 +3,21 @@ plugins {
     id("org.jetbrains.kotlin.android")
     kotlin("kapt")
     id("dagger.hilt.android.plugin")
+    id("com.google.devtools.ksp")
 }
 
 android {
-    compileSdk = 31
+    namespace = "com.joaograca.calorytracker"
+    compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.plcoding.calorytracker"
+        applicationId = "com.joaograca.calorytracker"
         minSdk = 21
-        targetSdk = 31
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "com.plcoding.calorytracker.HiltTestRunner"
+        testInstrumentationRunner = "com.joaograca.calorytracker.HiltTestRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -28,12 +30,12 @@ android {
         }
     }
     compileOptions {
+        isCoreLibraryDesugaringEnabled = true
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
         jvmTarget = "1.8"
-        // useIR = true
     }
     buildFeatures {
         compose = true
@@ -42,17 +44,20 @@ android {
         kotlinCompilerExtensionVersion = libs.versions.composeCompiler.get()
     }
     packagingOptions {
-        exclude("META-INF/AL2.0")
-        exclude("META-INF/LGPL2.1")
-        exclude("**/attach_hotspot_windows.dll")
-        exclude("META-INF/licenses/ASM")
-        /*resources {
-            excludes += '/META-INF/{AL2.0,LGPL2.1}'
-        }*/
+        resources {
+            excludes += setOf(
+                "META-INF/AL2.0",
+                "META-INF/LGPL2.1",
+                "**/attach_hotspot_windows.dll",
+                "META-INF/licenses/ASM"
+            )
+        }
     }
 }
 
 dependencies {
+    coreLibraryDesugaring(libs.desugar)
+
     implementation(libs.compose.compiler)
     implementation(libs.compose.ui)
     implementation(libs.compose.ui.tooling.preview)
@@ -86,7 +91,7 @@ dependencies {
     implementation(libs.okHttp.logging.interceptor)
     implementation(libs.retrofit.moshi.converter)
 
-    kapt(libs.room.compiler)
+    ksp(libs.room.compiler)
     implementation(libs.room.ktx)
     implementation(libs.room.runtime)
 

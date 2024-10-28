@@ -2,7 +2,7 @@ package com.joaograca.tracker_presentation.tracker_overview.components
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
-import com.joaograca.tracker_presentation.R
+import com.joaograca.core.R
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 

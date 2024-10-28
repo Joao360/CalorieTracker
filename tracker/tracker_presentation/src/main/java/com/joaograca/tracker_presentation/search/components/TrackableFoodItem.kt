@@ -34,7 +34,7 @@ import androidx.compose.ui.unit.sp
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
 import com.joaograca.core_ui.LocalSpacing
-import com.joaograca.tracker_presentation.R
+import com.joaograca.core.R
 import com.joaograca.tracker_presentation.components.NutrientInfo
 import com.joaograca.tracker_presentation.search.TrackableFoodUiState
 

@@ -1,5 +1,6 @@
 plugins {
     id("base-module")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -15,7 +16,7 @@ dependencies {
     implementation(libs.okHttp.logging.interceptor)
     implementation(libs.retrofit.moshi.converter)
 
-    kapt(libs.room.compiler)
+    ksp(libs.room.compiler)
     implementation(libs.room.ktx)
     implementation(libs.room.runtime)
 }
